@@ -1,0 +1,53 @@
+{
+	"listOfQuestions": 
+	[
+		{
+			"question":"Are you 17 or older?",
+			"answers":
+				[ 
+					"Yes, I am", 
+					"No, I'm not" 
+				]
+		},
+		
+		{
+			"question":"Do you like playing computer games?",
+			"answers":
+				[ 
+					"Yes, I do", 
+					"No, I don't" 
+				]
+		},
+		
+		{
+			"question":"What's your favorite rock band?",
+			"answers":
+				[ 
+					"Metallica", 
+					"Rammstein", 
+					"System of a Down", 
+					"I hate rock" 
+				]
+		},
+		
+		{
+			"question":"What's your favorite food?",
+			"answers":
+				[ 
+					"Salo", 
+					"Pizza", 
+					"Ice Cream", 
+					"Borscht",
+					"Cake",
+					"Candy",
+					"French Fries",
+					"Steak",
+					"Pasta",
+					"Chicken Kiev",
+					"Sausage",
+					"Apple Pie",
+					"I don't eat"
+				]
+		}
+	]
+}

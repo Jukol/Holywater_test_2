@@ -1,0 +1,1 @@
+{"listOfAnswers":[{"question":"Are you 17 or older?","answer":"Yes, I am"},{"question":"Do you like playing computer games?","answer":"No, I don't"},{"question":"What's your favorite rock band?","answer":"Metallica"},{"question":"What's your favorite food?","answer":"Pizza"}]}
