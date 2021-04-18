@@ -3,14 +3,14 @@
 public class DataProcessor : MonoBehaviour, IDataHandler
 {
     public int numberOfQuestions { get; private set; }
-    [SerializeField] private JsonReader _jsonReader;
-
     public string[] inputQuestionTexts { get; private set; }
     public string[][] inputAnswerTexts { get; private set; }
 
     public Answers answers;
-    private string _buttonText;
 
+    [SerializeField] private JsonReader _jsonReader;
+
+    private string _buttonText;
     private int _counter = 0;
 
     private void Awake()

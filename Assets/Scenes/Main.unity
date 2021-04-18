@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821c615914ddd684b95d6d5aef8b3609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 4900000, guid: 415a3b7b218de0d4ab6a4ca7663aa2a6, type: 3}
+  _input: {fileID: 4900000, guid: 415a3b7b218de0d4ab6a4ca7663aa2a6, type: 3}
   _questions:
     listOfQuestions: []
 --- !u!114 &97381555
@@ -352,9 +352,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fdd1a19a0490b49a0d1f176dd08ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jsonReader: {fileID: 97381554}
   answers:
     listOfAnswers: []
+  _jsonReader: {fileID: 97381554}
 --- !u!1 &229088635
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,7 +786,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -0.000030517578, y: -0.00012207031}
-  m_SizeDelta: {x: 722, y: 0}
+  m_SizeDelta: {x: 722, y: -755.4038}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &538582465
 MonoBehaviour:
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1758,7 +1758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1046387707
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2051,7 +2051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1437333863
 RectTransform:
   m_ObjectHideFlags: 0

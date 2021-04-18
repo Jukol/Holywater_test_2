@@ -7,9 +7,9 @@ public class AnswerButton : MonoBehaviour
 {
     public string buttonText;
 
-    private Button _thisButton;
-
     public static Action<string> TextFromButton;
+
+    private Button _thisButton;
 
     private void OnEnable()
     {

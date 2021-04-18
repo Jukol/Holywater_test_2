@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Animator _bunnyAnimator, _questionBubbleAnimator;
+
     [SerializeField] private GameObject _questionBubble, _answerPrefab, _answersParent;
     [SerializeField] private GameObject _startPanel, _mainPanel, _finalPanel, _thankYouPanel;
 
@@ -40,18 +41,19 @@ public class UIManager : MonoBehaviour
     private IEnumerator AnimationSequence()
     {
         _bunnyAnimator.SetTrigger("StartPlaying");
+
         yield return _waitBetweenAnimations;
 
         _questionBubble.gameObject.SetActive(true);
 
-        QuestionInit(_counter);
+        QuestionButtonsInit(_counter);
 
         yield return _waitBetweenAnimations;
 
         AnswerSelectionInit(_counter);
     }
 
-    private void QuestionInit(int iteration)
+    private void QuestionButtonsInit(int iteration)
     {
         _questionBubble.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _dataProcessor.inputQuestionTexts[iteration];
         _questionBubbleAnimator.SetTrigger("StartPlaying");
@@ -81,7 +83,7 @@ public class UIManager : MonoBehaviour
 
             DestroyAnswerButtons();
 
-            QuestionInit(_counter);
+            QuestionButtonsInit(_counter);
             AnswerSelectionInit(_counter);
         }
 
@@ -105,6 +107,7 @@ public class UIManager : MonoBehaviour
             Destroy(button);
         }
     }
+
     public void ReloadApp()
     {
         Scene currentScene = SceneManager.GetActiveScene();
