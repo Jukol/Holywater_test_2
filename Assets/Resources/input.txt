@@ -34,7 +34,7 @@
 			"question":"What's your favorite food?",
 			"answers":
 				[ 
-					"Salo", 
+					"Salmon", 
 					"Pizza", 
 					"Ice Cream", 
 					"Borscht",
@@ -46,7 +46,7 @@
 					"Chicken Kiev",
 					"Sausage",
 					"Apple Pie",
-					"I don't eat"
+					"Potato Salad"
 				]
 		}
 	]
