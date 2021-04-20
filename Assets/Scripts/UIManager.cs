@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject _questionBubble, _answersParent;
     [SerializeField] private GameObject _startPanel, _mainPanel, _finalPanel, _thankYouPanel;
-    [SerializeField] private GameObject _buttonPool;
+    [SerializeField] private ButtonPool _buttonPool;
     
     [SerializeField] private DataProcessor _dataProcessor;
 
@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < _dataProcessor.dataBase[id].answers.Length; i++)
         {
-            _answerButton = ButtonPool.Instance.ButtonRequest();
+            _answerButton = _buttonPool.ButtonRequest();
             _answerButton.transform.SetParent(_answersParent.transform, false);
             _answerButton.Id = id;
             

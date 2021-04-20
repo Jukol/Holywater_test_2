@@ -26,4 +26,9 @@ public class AnswerButton : MonoBehaviour
         ButtonText = TMProText.text;
         _dataProcessor.HandleOutput(Id, ButtonText);
     }
+
+    private void OnDisable()
+    {
+        _thisButton.onClick.RemoveAllListeners();
+    }
 }

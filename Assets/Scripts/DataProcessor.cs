@@ -64,8 +64,16 @@ public class DataProcessor : MonoBehaviour, IDataHandler
 
     public void HandleOutput(int id, string buttonText)
     {
-        answers.listOfAnswers[id].question = _questions.listOfQuestions[id].question;
-        answers.listOfAnswers[id].answer = buttonText;
+        if (!fileEmpty)
+        {
+            answers.listOfAnswers[id].question = _questions.listOfQuestions[id].question;
+            answers.listOfAnswers[id].answer = buttonText;
+        }
+        else
+        {
+            return;
+        }
+        
     }
 
     private void AnswerArrayInit()

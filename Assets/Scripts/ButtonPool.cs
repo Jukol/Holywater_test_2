@@ -3,24 +3,24 @@ using UnityEngine;
 
 public class ButtonPool : MonoBehaviour
 {
-    private static ButtonPool _instance;
-    public static ButtonPool Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new ButtonPool();
-            }
+    //private static ButtonPool _instance;
+    //public static ButtonPool Instance
+    //{
+    //    get
+    //    {
+    //        if (_instance == null)
+    //        {
+    //            _instance = new ButtonPool();
+    //        }
 
-            return _instance;
-        }
-    }
+    //        return _instance;
+    //    }
+    //}
 
-    private void Awake()
-    {
-        _instance = this;
-    }
+    //private void Awake()
+    //{
+    //    _instance = this;
+    //}
 
     [SerializeField] private AnswerButton _buttonPrefab;
     [SerializeField] private int _buttonsInPool;
