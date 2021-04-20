@@ -1,5 +1,5 @@
 ﻿public interface IDataHandler
 {
     void HandleInput();
-    void HandleOutput();
+    void HandleOutput(int id, string buttonText);
 }

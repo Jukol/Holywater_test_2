@@ -287,4 +287,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fed6ef44387f146a10ccc6a59ddf93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonText: 
+  TMProText: {fileID: 3322718524293454258}

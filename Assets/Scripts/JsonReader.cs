@@ -4,7 +4,7 @@ public class JsonReader : MonoBehaviour, IDataReader
 
 {
     [SerializeField] private TextAsset _input;
-    [SerializeField] private Questions _questions; 
+    [SerializeField] private Questions _questions;
 
     private void Start()
     {
@@ -12,7 +12,7 @@ public class JsonReader : MonoBehaviour, IDataReader
     }
 
     public Questions ReadFromJson()
-    {
+    {   
         return JsonUtility.FromJson<Questions>(_input.text);
     }
 }

@@ -354,6 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answers:
     listOfAnswers: []
+  fileEmpty: 0
   _jsonReader: {fileID: 97381554}
 --- !u!1 &229088635
 GameObject:
@@ -371,7 +372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &229088636
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1178,18 +1179,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 97381556}
-        m_TargetAssemblyTypeName: DataProcessor, Assembly-CSharp
-        m_MethodName: HandleOutput
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1067843293}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: DataSwitcher
@@ -1335,7 +1324,7 @@ RectTransform:
   - {fileID: 2116958827}
   - {fileID: 1437333863}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1354,7 +1343,7 @@ GameObject:
   - component: {fileID: 829093338}
   - component: {fileID: 829093337}
   m_Layer: 5
-  m_Name: Upload_Question_Text
+  m_Name: Final_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1376,7 +1365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24.2, y: 125}
+  m_AnchoredPosition: {x: -24.2, y: 194}
   m_SizeDelta: {x: 600.7859, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &829093337
@@ -1836,14 +1825,14 @@ MonoBehaviour:
   _bunnyAnimator: {fileID: 1149783218}
   _questionBubbleAnimator: {fileID: 1228440995}
   _questionBubble: {fileID: 1228440991}
-  _answerPrefab: {fileID: 3322718525476105856, guid: 20f2efb6185646c47b6075340b3d0179, type: 3}
   _answersParent: {fileID: 538582463}
   _startPanel: {fileID: 229088635}
   _mainPanel: {fileID: 1046387706}
   _finalPanel: {fileID: 2116958826}
   _thankYouPanel: {fileID: 1437333862}
-  _jsonReader: {fileID: 97381554}
+  _buttonPool: {fileID: 1454681640}
   _dataProcessor: {fileID: 97381556}
+  _finalText: {fileID: 829093337}
 --- !u!1 &1149783214
 GameObject:
   m_ObjectHideFlags: 0
@@ -2051,7 +2040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1437333863
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2080,6 +2069,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437333862}
   m_CullTransparentMesh: 0
+--- !u!1 &1454681640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1454681642}
+  - component: {fileID: 1454681641}
+  m_Layer: 0
+  m_Name: ButtonPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1454681641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454681640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17aaedec96e30414ba0a81a94b10ae18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonPrefab: {fileID: -3484435762303753539, guid: 20f2efb6185646c47b6075340b3d0179, type: 3}
+  _buttonsInPool: 3
+  _buttonsContainer: {fileID: 1454681640}
+--- !u!4 &1454681642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454681640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1943696920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,7 +2179,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1957465385
 GameObject:

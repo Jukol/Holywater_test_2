@@ -2,22 +2,31 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Animator _bunnyAnimator, _questionBubbleAnimator;
 
-    [SerializeField] private GameObject _questionBubble, _answerPrefab, _answersParent;
+    [SerializeField] private GameObject _questionBubble, _answersParent;
     [SerializeField] private GameObject _startPanel, _mainPanel, _finalPanel, _thankYouPanel;
-
-    [SerializeField] private JsonReader _jsonReader;
+    [SerializeField] private GameObject _buttonPool;
     
     [SerializeField] private DataProcessor _dataProcessor;
+
+    [SerializeField] private TextMeshProUGUI _finalText;
 
     private WaitForSeconds _waitBetweenAnimations;
     private float _secondsBetweenAnimations = 0.3f;
 
     private int _counter = 0;
+
+    private TextMeshProUGUI _questionBubbleText;
+
+    private AnswerButton _answerButton;
+
+    private List<AnswerButton> _answerButtonList = new List<AnswerButton>();
+
 
     private void Awake()
     {
@@ -31,6 +40,8 @@ public class UIManager : MonoBehaviour
         _mainPanel.SetActive(false);
         _finalPanel.SetActive(false);
         _thankYouPanel.SetActive(false);
+
+        _questionBubbleText = _questionBubble.gameObject.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void StartApp()
@@ -46,26 +57,32 @@ public class UIManager : MonoBehaviour
 
         _questionBubble.gameObject.SetActive(true);
 
-        QuestionButtonsInit(_counter);
+        QuestionButtonInit(_counter);
 
         yield return _waitBetweenAnimations;
 
         AnswerSelectionInit(_counter);
     }
 
-    private void QuestionButtonsInit(int iteration)
+    private void QuestionButtonInit(int id)
     {
-        _questionBubble.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _dataProcessor.inputQuestionTexts[iteration];
+        _questionBubbleText.text = _dataProcessor.dataBase[id].question;
         _questionBubbleAnimator.SetTrigger("StartPlaying");
     }
 
-    private void AnswerSelectionInit(int iteration)
+    private void AnswerSelectionInit(int id)
     {
-        for (int i = 0; i < _jsonReader.ReadFromJson().listOfQuestions[iteration].answers.Length; i++)
+        for (int i = 0; i < _dataProcessor.dataBase[id].answers.Length; i++)
         {
-            GameObject answer = Instantiate(_answerPrefab, _answersParent.transform);
-            answer.GetComponentInChildren<TextMeshProUGUI>().text = _dataProcessor.inputAnswerTexts[iteration][i];
-            AnimationPlayer(answer);
+            _answerButton = ButtonPool.Instance.ButtonRequest();
+            _answerButton.transform.SetParent(_answersParent.transform, false);
+            _answerButton.Id = id;
+            
+            _answerButton.TMProText.text = _dataProcessor.dataBase[id].answers[i];
+
+            _answerButtonList.Add(_answerButton);
+            
+            AnimationPlayer(_answerButton.gameObject);
         }
     }
 
@@ -77,35 +94,44 @@ public class UIManager : MonoBehaviour
 
     public void DataSwitcher()
     {
-        if(_counter < _dataProcessor.numberOfQuestions - 1)
+        if(_counter < _dataProcessor.QuestionsCount - 1 && !_dataProcessor.fileEmpty)
         {
             _counter++;
 
-            DestroyAnswerButtons();
+            DeactivateAnswerButtons();
 
-            QuestionButtonsInit(_counter);
+            QuestionButtonInit(_counter);
             AnswerSelectionInit(_counter);
         }
 
-        else
+        else if (_counter >= _dataProcessor.QuestionsCount - 1 && !_dataProcessor.fileEmpty)
         {
-            LoadFinalPanel();
+            if (!_dataProcessor.checkForEmptyAnswers())
+            {
+                LoadFinalPanel("Ready to upload your answers?");
+            }
+            else
+            {
+                LoadFinalPanel("One or more questions left unanswered. \nStill want to upload?");
+            }
         }
     }
 
-    private void LoadFinalPanel()
+    private void LoadFinalPanel(string finalText)
     {
         _mainPanel.SetActive(false);
         _finalPanel.SetActive(true);
+        _finalText.text = finalText;
     }
 
-    private static void DestroyAnswerButtons()
+    private void DeactivateAnswerButtons()
     {
-        GameObject[] answerButtons = GameObject.FindGameObjectsWithTag("Answer Button");
-        foreach (GameObject button in answerButtons)
+        foreach (AnswerButton button in _answerButtonList)
         {
-            Destroy(button);
+            button.gameObject.SetActive(false);
+            button.gameObject.transform.SetParent(_buttonPool.transform, false);
         }
+        _answerButtonList.Clear();
     }
 
     public void ReloadApp()
