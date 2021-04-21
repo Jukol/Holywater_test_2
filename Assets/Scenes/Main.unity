@@ -325,8 +325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _input: {fileID: 4900000, guid: 415a3b7b218de0d4ab6a4ca7663aa2a6, type: 3}
-  _questions:
-    listOfQuestions: []
 --- !u!114 &97381555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2098,6 +2096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17aaedec96e30414ba0a81a94b10ae18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dataProcessor: {fileID: 97381556}
   _buttonPrefab: {fileID: -3484435762303753539, guid: 20f2efb6185646c47b6075340b3d0179, type: 3}
   _buttonsInPool: 3
   _buttonsContainer: {fileID: 1454681640}

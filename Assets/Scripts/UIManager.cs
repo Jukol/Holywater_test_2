@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject _questionBubble, _answersParent;
     [SerializeField] private GameObject _startPanel, _mainPanel, _finalPanel, _thankYouPanel;
+
     [SerializeField] private ButtonPool _buttonPool;
     
     [SerializeField] private DataProcessor _dataProcessor;
@@ -26,7 +27,6 @@ public class UIManager : MonoBehaviour
     private AnswerButton _answerButton;
 
     private List<AnswerButton> _answerButtonList = new List<AnswerButton>();
-
 
     private void Awake()
     {
@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
 
         else if (_counter >= _dataProcessor.QuestionsCount - 1 && !_dataProcessor.fileEmpty)
         {
-            if (!_dataProcessor.checkForEmptyAnswers())
+            if (!_dataProcessor.СheckForEmptyAnswers())
             {
                 LoadFinalPanel("Ready to upload your answers?");
             }

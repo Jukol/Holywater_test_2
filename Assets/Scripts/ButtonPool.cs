@@ -3,25 +3,7 @@ using UnityEngine;
 
 public class ButtonPool : MonoBehaviour
 {
-    //private static ButtonPool _instance;
-    //public static ButtonPool Instance
-    //{
-    //    get
-    //    {
-    //        if (_instance == null)
-    //        {
-    //            _instance = new ButtonPool();
-    //        }
-
-    //        return _instance;
-    //    }
-    //}
-
-    //private void Awake()
-    //{
-    //    _instance = this;
-    //}
-
+    [SerializeField] private DataProcessor _dataProcessor;
     [SerializeField] private AnswerButton _buttonPrefab;
     [SerializeField] private int _buttonsInPool;
     [SerializeField] private GameObject _buttonsContainer;
@@ -62,6 +44,7 @@ public class ButtonPool : MonoBehaviour
         AnswerButton button = Instantiate(_buttonPrefab);
         button.transform.SetParent(_buttonsContainer.transform);
         button.gameObject.SetActive(false);
+        button.eventOnClick += _dataProcessor.HandleOutput;
         _buttons.Add(button);
         return button;
     }

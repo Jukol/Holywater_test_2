@@ -87,7 +87,7 @@ public class DataProcessor : MonoBehaviour, IDataHandler
         }
     }
 
-    public bool checkForEmptyAnswers()
+    public bool СheckForEmptyAnswers()
     {
         foreach (var answer in answers.listOfAnswers)
         {
